@@ -1,20 +1,24 @@
 'use client';
+
 import { useState } from 'react';
 
-import { useRouter } from 'next/navigation';
+import updateUserService
+  from '@/services/services_postgres_drizzel/updateUserService';
 
-import createUserService
-  from '@/services/services_postgres_drizzel/createUserService';
+interface UpdateUserDrizzelProps {
+  user: UserDrizzle;
+}
 
-function CreateUserDrizzle(): JSX.Element {
+function UpdateUserDrizzel({ user }: UpdateUserDrizzelProps): JSX.Element {
   const [formData, setFormData] = useState<UserDrizzle>({
-    name: '',
-    age: 0,
-    email: '',
+    id: user.id,
+    name: `${user.name}`,
+    age: user.age,
+    email: `${user.email}`,
   });
 
   function submitHandler(formData: UserDrizzle) {
-    createUserService(formData);
+    updateUserService(user.id!, formData);
   }
   return (
     <>
@@ -45,10 +49,10 @@ function CreateUserDrizzle(): JSX.Element {
         type='submit'
         onClick={() => submitHandler(formData)}
       >
-        Create User
+        update User
       </button>
     </>
   );
 }
 
-export default CreateUserDrizzle;
+export default UpdateUserDrizzel;

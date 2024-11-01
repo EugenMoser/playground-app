@@ -4,29 +4,43 @@ import {
   useState,
 } from 'react';
 
+import { Skeleton } from '@/app/components/ui/skeleton';
+import deleteUser from '@/services/services_postgres_drizzel/deleteUserService';
 import getUsers from '@/services/services_postgres_drizzel/getUserService';
+import { QueryResultRow } from '@vercel/postgres';
 
-// import { QueryResultRow } from '@vercel/postgres';
-
-// import { strings } from '../postgres/strings';
-// import DeleteUser from './deleteUser';
-// import UpdateUser from './updateUser';
+import UpdateUserDrizzel from './UpdateUserDrizzle';
 
 function UserTableDrizzle(): JSX.Element {
-  const [users, setUsers] = useState<UserDrizzle[]>([]);
-  const [openUpdateUserId, setOpenUpdateUserId] = useState<string | ''>(
+  const [users, setUsers] = useState<UserDrizzle[] | null>(null);
+  const [openUpdateUserId, setOpenUpdateUserId] = useState<number | ''>(
     ''
   );
 
   useEffect(() => {
-    getUsers().then((data) => setUsers(data));
+    fetchData();
   }, []);
 
-  function handleUpdateClick(userId: string) {
-    // Setzt die ID des Users, der aktualisiert werden soll
+  async function fetchData() {
+    const users = await getUsers();
+    setUsers(users);
+  }
+
+  function handleUpdateClick(userId: number) {
     setOpenUpdateUserId(openUpdateUserId === userId ? '' : userId);
   }
-  console.log('row', users);
+
+  function handleDeleteClick(userId: number) {
+    deleteUser(userId).then(() => {
+      fetchData();
+    });
+  }
+
+  if (!users) {
+    return <SkeletonUserDrizzle />;
+  }
+
+  console.log('users', users);
   return (
     <>
       <h2>get users</h2>
@@ -37,15 +51,32 @@ function UserTableDrizzle(): JSX.Element {
             <p>Name: {user.name}</p>
             <p>Age: {user.age}</p>
             <p>Email: {user.email}</p>
-            {/* <DeleteUser id={user.id} />
-            <button onClick={() => handleUpdateClick(user.id)}>
-              Daten ändern
+
+            <button onClick={() => handleDeleteClick(user.id!)}>
+              User löschen
             </button>
-            {openUpdateUserId === user.id && <UpdateUser user={user} />} */}
+            <button onClick={() => handleUpdateClick(user.id!)}>
+              User bearbeiten
+            </button>
+            {openUpdateUserId === user.id && (
+              <UpdateUserDrizzel user={user} />
+            )}
           </li>
         ))}
       </ul>
     </>
+  );
+}
+
+export function SkeletonUserDrizzle() {
+  return (
+    <div className='flex  items-start space-x-4 '>
+      <Skeleton className='h-12 w-12 rounded-full' />
+      <div className='space-y-2'>
+        <Skeleton className='h-4 w-[250px]' />
+        <Skeleton className='h-4 w-[200px]' />
+      </div>
+    </div>
   );
 }
 
