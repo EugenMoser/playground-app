@@ -2,7 +2,7 @@
 import { eq } from 'drizzle-orm';
 import { drizzle } from 'drizzle-orm/vercel-postgres';
 
-import { usersTable } from '@/db/drizzle/schema';
+import { usersTable } from '@/app/postgres-drizzle/db/schema';
 
 async function createUser(id: number, updatedUser: UserDrizzle) {
   const db = drizzle();

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 
 import updateUserService
-  from '@/services/services_postgres_drizzel/updateUserService';
+  from '@/app/postgres-drizzle/services/updateUserService';
 
 interface UpdateUserDrizzelProps {
   user: UserDrizzle;

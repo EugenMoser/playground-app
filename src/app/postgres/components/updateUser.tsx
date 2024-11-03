@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { updateUser } from '@/services/services_postgres/updateUser';
+import { updateUser } from '@/app/postgres/services/updateUser';
 import { QueryResultRow } from '@vercel/postgres';
 
 function UpdateUser({ user }: QueryResultRow): JSX.Element {

@@ -5,7 +5,7 @@ import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
-import { getUsers } from '@/services/services_postgres/getUsers';
+import { getUsers } from '@/app/postgres/services/getUsers';
 import { QueryResultRow } from '@vercel/postgres';
 
 import CreateUserDrizzle from './components/CreateUserDrizzle';

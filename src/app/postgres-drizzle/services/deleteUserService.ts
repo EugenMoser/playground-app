@@ -2,7 +2,7 @@
 import { eq } from 'drizzle-orm';
 import { drizzle } from 'drizzle-orm/vercel-postgres';
 
-import { usersTable } from '@/db/drizzle/schema';
+import { usersTable } from '@/app/postgres-drizzle/db/schema';
 
 async function deleteUser(id: number) {
   const db = drizzle();

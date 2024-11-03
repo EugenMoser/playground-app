@@ -1,8 +1,11 @@
 // import { QueryResultRow, sql } from '@vercel/postgres';
 'use client';
-import { useEffect, useState } from 'react';
+import {
+  useEffect,
+  useState,
+} from 'react';
 
-import { getUsers } from '@/services/services_postgres/getUsers';
+import { getUsers } from '@/app/postgres/services/getUsers';
 import { QueryResultRow } from '@vercel/postgres';
 
 import DeleteUser from '../components/deleteUser';

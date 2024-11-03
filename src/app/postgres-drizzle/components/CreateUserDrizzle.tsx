@@ -1,10 +1,8 @@
 'use client';
 import { useState } from 'react';
 
-import { useRouter } from 'next/navigation';
-
 import createUserService
-  from '@/services/services_postgres_drizzel/createUserService';
+  from '@/app/postgres-drizzle/services/createUserService';
 
 function CreateUserDrizzle(): JSX.Element {
   const [formData, setFormData] = useState<UserDrizzle>({

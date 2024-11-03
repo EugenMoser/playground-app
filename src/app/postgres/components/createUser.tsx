@@ -3,8 +3,11 @@ import { useState } from 'react';
 
 import { useRouter } from 'next/navigation';
 
-import { createUser } from '@/services/services_postgres/createUser';
-import { QueryResultRow, sql } from '@vercel/postgres';
+import { createUser } from '@/app/postgres/services/createUser';
+import {
+  QueryResultRow,
+  sql,
+} from '@vercel/postgres';
 
 interface CreateUserProps {}
 interface User {

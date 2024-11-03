@@ -5,8 +5,8 @@ import {
 } from 'react';
 
 import { Skeleton } from '@/app/components/ui/skeleton';
-import deleteUser from '@/services/services_postgres_drizzel/deleteUserService';
-import getUsers from '@/services/services_postgres_drizzel/getUserService';
+import deleteUser from '@/app/postgres-drizzle/services/deleteUserService';
+import getUsers from '@/app/postgres-drizzle/services/getUserService';
 import { QueryResultRow } from '@vercel/postgres';
 
 import UpdateUserDrizzel from './UpdateUserDrizzle';
