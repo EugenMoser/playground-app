@@ -2,12 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-/* :root {
+:root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-rgb: 255, 255, 255;
+}
+html {
+  height: 100%;
 }
 
+body {
+  color: rgb(var(--foreground-rgb));
+  background-color: rgb(var(--background-rgb));
+  height: 100%;
+}
+/*
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -16,15 +24,7 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
+
 
 @layer utilities {
   .text-balance {
@@ -32,9 +32,9 @@ body {
   }
 } */
 
-@layer base {
+/* @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: white;
 
     --foreground: 0 0% 3.9%;
 
@@ -85,7 +85,7 @@ body {
     --radius: 0.5rem;
   }
   .dark {
-    --background: 0 0% 3.9%;
+    --background:white;
 
     --foreground: 0 0% 98%;
 
@@ -142,4 +142,4 @@ body {
   body {
     @apply bg-background text-foreground;
   }
-}
+} */
