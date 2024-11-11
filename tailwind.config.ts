@@ -69,7 +69,7 @@ const config: Config = {
         mytheme: {
           primary: "#001cff",
 
-          secondary: "#003ccc",
+          secondary: "#77aaff",
 
           accent: "#00b8b2",
 
@@ -85,7 +85,7 @@ const config: Config = {
 
           error: "#ff5e7d",
           body: {
-            "background-color": "#e3e6e6",
+            "background-color": "#fff",
           },
         },
       },
