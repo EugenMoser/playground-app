@@ -1,8 +1,8 @@
 // import { useState } from 'react';
 
-import CreateUser from '@/app/postgres/components/createUser';
-import DeleteUser from '@/app/postgres/components/deleteUser';
-import UserTable from '@/app/postgres/components/userTable';
+import CreateUser from "@/app/postgres/components/createUser";
+import DeleteUser from "@/app/postgres/components/deleteUser";
+import UserTable from "@/app/postgres/components/userTable";
 
 interface PostgresFunktionsProps {}
 

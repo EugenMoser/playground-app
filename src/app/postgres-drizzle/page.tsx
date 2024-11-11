@@ -1,5 +1,5 @@
-'use client';
-import 'dotenv/config';
+"use client";
+import "dotenv/config";
 
 interface PostgresDrizzleProps {}
 

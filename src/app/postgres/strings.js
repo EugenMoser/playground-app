@@ -1,3 +1,3 @@
 export const strings = {
-  dbTableName: 'postgres_user',
+  dbTableName: "postgres_user",
 };

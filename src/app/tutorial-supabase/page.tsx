@@ -1,11 +1,11 @@
-'use client';
-import Team from './components/Team';
+"use client";
+import Team from "./components/Team";
 
 interface SupabaseHomeProps {}
 
 function SupabaseHome({}: SupabaseHomeProps): JSX.Element {
   return (
-    <div className='flex items-center justify-center m-4'>
+    <div className="m-4 flex items-center justify-center">
       <Team />
     </div>
   );

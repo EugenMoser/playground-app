@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { Loader2 } from 'lucide-react';
+import { Loader2 } from "lucide-react";
 
-import { Button } from '@/app/components/ui/button';
+import { Button } from "@/app/components/ui/button";
 
 export default function CustomButton({
   label,
-  variant = 'default',
+  variant = "default",
   loading,
   onClick,
 }: {
@@ -17,19 +17,13 @@ export default function CustomButton({
 }) {
   if (loading)
     return (
-      <Button
-        variant='outline'
-        disabled
-      >
-        <Loader2 className='animate-spin' />
+      <Button variant="outline" disabled>
+        <Loader2 className="animate-spin" />
       </Button>
     );
 
   return (
-    <Button
-      variant={variant}
-      onClick={() => onClick()}
-    >
+    <Button variant={variant} onClick={() => onClick()}>
       {label}
     </Button>
   );

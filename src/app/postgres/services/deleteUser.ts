@@ -1,6 +1,6 @@
-'use server';
-import { strings } from '@/app/postgres/strings';
-import { QueryResultRow, sql } from '@vercel/postgres';
+"use server";
+import { strings } from "@/app/postgres/strings";
+import { QueryResultRow, sql } from "@vercel/postgres";
 
 export async function deleteUser(id: string): Promise<void> {
   try {
@@ -8,6 +8,6 @@ export async function deleteUser(id: string): Promise<void> {
     await sql.query(query);
   } catch (error) {
     // Handle errord
-    console.error('Error deleting user:', error);
+    console.error("Error deleting user:", error);
   }
 }

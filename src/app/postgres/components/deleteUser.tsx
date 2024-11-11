@@ -1,7 +1,7 @@
-'use client';
-import { useState } from 'react';
+"use client";
+import { useState } from "react";
 
-import { deleteUser } from '@/app/postgres/services/deleteUser';
+import { deleteUser } from "@/app/postgres/services/deleteUser";
 
 interface DeleteUserProps {
   id: string;

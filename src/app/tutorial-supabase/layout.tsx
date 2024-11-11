@@ -1,9 +1,9 @@
-import type { Metadata } from 'next';
-import { Toaster } from 'sonner';
+import type { Metadata } from "next";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
-  title: 'Supabase',
-  description: 'experience the power of Supabase',
+  title: "Supabase",
+  description: "experience the power of Supabase",
 };
 
 export default function SupabaseLayout({
@@ -12,12 +12,9 @@ export default function SupabaseLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
+    <html lang="en">
       <body>
-        <Toaster
-          richColors
-          position='top-right'
-        />
+        <Toaster richColors position="top-right" />
         {children}
       </body>
     </html>

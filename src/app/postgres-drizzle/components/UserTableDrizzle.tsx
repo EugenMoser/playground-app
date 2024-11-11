@@ -1,21 +1,16 @@
-'use client';
-import {
-  useEffect,
-  useState,
-} from 'react';
+"use client";
+import { useEffect, useState } from "react";
 
-import { Skeleton } from '@/app/components/ui/skeleton';
-import deleteUser from '@/app/postgres-drizzle/services/deleteUserService';
-import getUsers from '@/app/postgres-drizzle/services/getUserService';
-import { QueryResultRow } from '@vercel/postgres';
+import { Skeleton } from "@/app/components/ui/skeleton";
+import deleteUser from "@/app/postgres-drizzle/services/deleteUserService";
+import getUsers from "@/app/postgres-drizzle/services/getUserService";
+import { QueryResultRow } from "@vercel/postgres";
 
-import UpdateUserDrizzel from './UpdateUserDrizzle';
+import UpdateUserDrizzel from "./UpdateUserDrizzle";
 
 function UserTableDrizzle(): JSX.Element {
   const [users, setUsers] = useState<UserDrizzle[] | null>(null);
-  const [openUpdateUserId, setOpenUpdateUserId] = useState<number | ''>(
-    ''
-  );
+  const [openUpdateUserId, setOpenUpdateUserId] = useState<number | "">("");
 
   useEffect(() => {
     fetchData();
@@ -27,7 +22,7 @@ function UserTableDrizzle(): JSX.Element {
   }
 
   function handleUpdateClick(userId: number) {
-    setOpenUpdateUserId(openUpdateUserId === userId ? '' : userId);
+    setOpenUpdateUserId(openUpdateUserId === userId ? "" : userId);
   }
 
   function handleDeleteClick(userId: number) {
@@ -40,7 +35,7 @@ function UserTableDrizzle(): JSX.Element {
     return <SkeletonUserDrizzle />;
   }
 
-  console.log('users', users);
+  console.log("users", users);
   return (
     <>
       <h2>get users</h2>
@@ -58,9 +53,7 @@ function UserTableDrizzle(): JSX.Element {
             <button onClick={() => handleUpdateClick(user.id!)}>
               User bearbeiten
             </button>
-            {openUpdateUserId === user.id && (
-              <UpdateUserDrizzel user={user} />
-            )}
+            {openUpdateUserId === user.id && <UpdateUserDrizzel user={user} />}
           </li>
         ))}
       </ul>
@@ -70,11 +63,11 @@ function UserTableDrizzle(): JSX.Element {
 
 export function SkeletonUserDrizzle() {
   return (
-    <div className='flex  items-start space-x-4 '>
-      <Skeleton className='h-12 w-12 rounded-full' />
-      <div className='space-y-2'>
-        <Skeleton className='h-4 w-[250px]' />
-        <Skeleton className='h-4 w-[200px]' />
+    <div className="flex items-start space-x-4">
+      <Skeleton className="h-12 w-12 rounded-full" />
+      <div className="space-y-2">
+        <Skeleton className="h-4 w-[250px]" />
+        <Skeleton className="h-4 w-[200px]" />
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
-'use server';
-import { drizzle } from 'drizzle-orm/vercel-postgres';
+"use server";
+import { drizzle } from "drizzle-orm/vercel-postgres";
 
-import { usersTable } from '@/app/postgres-drizzle/db/schema';
+import { usersTable } from "@/app/postgres-drizzle/db/schema";
 
 async function getUsers() {
   const db = drizzle();

@@ -1,7 +1,4 @@
-import {
-  EllipsisVertical,
-  UserX,
-} from 'lucide-react';
+import { EllipsisVertical, UserX } from "lucide-react";
 
 import {
   DropdownMenu,
@@ -9,18 +6,18 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/app/components/ui/dropdown-menu';
-import { useHelpers } from '@/app/tutorial-supabase/hooks/useHelpers';
+} from "@/app/components/ui/dropdown-menu";
+import { useHelpers } from "@/app/tutorial-supabase/hooks/useHelpers";
 
-import Remove from './Remove';
+import Remove from "./Remove";
 
 export default function Options({ user }: any) {
   const { open = false, setOpen, selected, setSelected } = useHelpers();
   const menu: any = [
     {
-      title: 'Remove member',
-      key: 'remove',
-      icon: <UserX className='w-[20px]' />,
+      title: "Remove member",
+      key: "remove",
+      icon: <UserX className="w-[20px]" />,
     },
   ];
 
@@ -29,20 +26,20 @@ export default function Options({ user }: any) {
       <Remove
         {...{
           user,
-          open: selected === 'remove',
+          open: selected === "remove",
           onClose: () => setSelected(undefined),
         }}
       />
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <EllipsisVertical className='w-4 cursor-pointer' />
+          <EllipsisVertical className="w-4 cursor-pointer" />
         </DropdownMenuTrigger>
-        <DropdownMenuContent className='w-56'>
+        <DropdownMenuContent className="w-56">
           <DropdownMenuGroup>
             {menu.map((item: any, i: number) => (
               <div key={i}>
                 <DropdownMenuItem
-                  className='flex gap-2 cursor-pointer'
+                  className="flex cursor-pointer gap-2"
                   onClick={() => setSelected(item.key)}
                 >
                   {item.icon}

@@ -1,13 +1,10 @@
-'use client';
-import { useState } from 'react';
+"use client";
+import { useState } from "react";
 
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 
-import { createUser } from '@/app/postgres/services/createUser';
-import {
-  QueryResultRow,
-  sql,
-} from '@vercel/postgres';
+import { createUser } from "@/app/postgres/services/createUser";
+import { QueryResultRow, sql } from "@vercel/postgres";
 
 interface CreateUserProps {}
 interface User {
@@ -18,7 +15,7 @@ interface User {
 
 function CreateUser({}: CreateUserProps): JSX.Element {
   const [formData, setFormData] = useState({
-    name: '',
+    name: "",
     age: 0,
   });
   const route = useRouter();
@@ -31,24 +28,21 @@ function CreateUser({}: CreateUserProps): JSX.Element {
     <>
       <h2>Create User</h2>
       <input
-        type='text'
-        placeholder='Name'
+        type="text"
+        placeholder="Name"
         onChange={(e) => {
           setFormData({ ...formData, name: e.target.value });
         }}
       />
       <input
-        type='number'
-        placeholder='Age'
+        type="number"
+        placeholder="Age"
         onChange={(e) => {
           setFormData({ ...formData, age: Number(e.target.value) });
         }}
       />
 
-      <button
-        type='submit'
-        onClick={() => submitHandler(formData)}
-      >
+      <button type="submit" onClick={() => submitHandler(formData)}>
         Create User
       </button>
     </>

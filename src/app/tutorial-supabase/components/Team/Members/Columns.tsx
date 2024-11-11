@@ -1,41 +1,41 @@
-import { toast } from 'sonner';
+import { toast } from "sonner";
 
-import { Badge } from '@/app/components/ui/badge';
-import { useHelpers } from '@/app/tutorial-supabase/hooks/useHelpers';
-import { supabase } from '@/app/tutorial-supabase/lib/supabase';
-import { ColumnDef } from '@tanstack/react-table';
+import { Badge } from "@/app/components/ui/badge";
+import { useHelpers } from "@/app/tutorial-supabase/hooks/useHelpers";
+import { supabase } from "@/app/tutorial-supabase/lib/supabase";
+import { ColumnDef } from "@tanstack/react-table";
 
-import Options from './Option';
-import Roles from './Option/Roles';
+import Options from "./Option";
+import Roles from "./Option/Roles";
 
 export const columns: ColumnDef<any>[] = [
   {
-    accessorKey: 'name',
-    header: 'Name',
+    accessorKey: "name",
+    header: "Name",
     cell: ({ row }) => {
-      const name: string = row.getValue('name');
+      const name: string = row.getValue("name");
       const email: string = row.original.email;
       return (
-        <div className='flex items-center gap-2'>
-          <div className='flex items-center justify-center bg-black text-white font-bold capitalize w-8 h-8 rounded-full'>
+        <div className="flex items-center gap-2">
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-black font-bold capitalize text-white">
             {name[0]}
           </div>
-          <div className='grid'>
-            <div className='font-medium'>{name}</div>
+          <div className="grid">
+            <div className="font-medium">{name}</div>
 
-            <div className='text-xs text-neutral-500'>{email}</div>
+            <div className="text-xs text-neutral-500">{email}</div>
           </div>
         </div>
       );
     },
   },
   {
-    accessorKey: 'role',
-    header: 'Role',
+    accessorKey: "role",
+    header: "Role",
     cell: ({ row }) => {
       // eslint-disable-next-line react-hooks/rules-of-hooks
       const { open, setOpen, loading, setLoading } = useHelpers();
-      const role: string = row.getValue('role');
+      const role: string = row.getValue("role");
       const id: string = row.original.id;
 
       const onRoleChanged = async (v: string) => {
@@ -43,15 +43,15 @@ export const columns: ColumnDef<any>[] = [
           setLoading(true);
 
           const { data, error } = await supabase
-            .from('team_members')
+            .from("team_members")
             .update({ role: v })
-            .eq('id', id)
-            .select('*');
+            .eq("id", id)
+            .select("*");
 
           if (data) {
-            console.log('data1111', data);
-            console.log('toast', toast.success);
-            toast.success('Role successfully updated.');
+            console.log("data1111", data);
+            console.log("toast", toast.success);
+            toast.success("Role successfully updated.");
           }
         } catch (error: any) {
           throw new Error(error);
@@ -62,14 +62,9 @@ export const columns: ColumnDef<any>[] = [
       };
 
       return (
-        <div
-          onClick={() => setOpen(!open)}
-          className='w-[120px]'
-        >
+        <div onClick={() => setOpen(!open)} className="w-[120px]">
           {!open && (
-            <span className='text-sm text-neutral-500 capitalize'>
-              {role}
-            </span>
+            <span className="text-sm capitalize text-neutral-500">{role}</span>
           )}
           {open && (
             <Roles
@@ -82,32 +77,32 @@ export const columns: ColumnDef<any>[] = [
     },
   },
   {
-    accessorKey: 'status',
-    header: 'Status',
+    accessorKey: "status",
+    header: "Status",
     cell: ({ row }) => {
-      const status: string = row.getValue('status');
+      const status: string = row.getValue("status");
       switch (status) {
-        case 'pending':
+        case "pending":
           return (
-            <Badge className='hover:bg-transparent capitalize bg-orange-50 text-orange-900'>
+            <Badge className="bg-orange-50 capitalize text-orange-900 hover:bg-transparent">
               Pending
             </Badge>
           );
-        case 'active':
+        case "active":
           return (
-            <Badge className='hover:bg-transparent capitalize bg-green-50 text-green-900'>
+            <Badge className="bg-green-50 capitalize text-green-900 hover:bg-transparent">
               Active
             </Badge>
           );
-        case 'removed':
+        case "removed":
           return (
-            <Badge className='hover:bg-transparent capitalize bg-red-50 text-red-900'>
+            <Badge className="bg-red-50 capitalize text-red-900 hover:bg-transparent">
               Removed
             </Badge>
           );
         default:
           return (
-            <Badge className='capitalize bg-neutral-100 text-neutral-600'>
+            <Badge className="bg-neutral-100 capitalize text-neutral-600">
               Unknown
             </Badge>
           );
@@ -115,11 +110,11 @@ export const columns: ColumnDef<any>[] = [
     },
   },
   {
-    id: 'actions',
+    id: "actions",
     cell: ({ row }) => {
       const user = row.original;
       return (
-        <div className='flex justify-end'>
+        <div className="flex justify-end">
           <Options {...{ user }} />
         </div>
       );
